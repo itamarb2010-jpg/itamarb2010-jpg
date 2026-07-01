@@ -36,7 +36,7 @@
 | **PizzaLauncher** | A full Minecraft launcher ecosystem — Electron app, Fabric cosmetics mods, backend, and website |
 | **Minecraft plugins** | Custom commissioned Paper plugins (summon books, custom redstone items, SMP mechanics) |
 | **Vencord plugins** | Personal Discord client mods — AI rewrite, mention inbox, channel digests, GIF upload bypass |
-| **Hytale plugins** | EconomyPlus, Dungeons, Shop, TAB, CorePlus and more |
+| **Hytale plugins** | EconomyPlus, HytaleDungeons, Shop, PlayerList and more |
 
 ---
 
