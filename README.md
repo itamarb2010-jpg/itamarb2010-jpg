@@ -48,10 +48,12 @@
 
 | Project               | What it is                                                                                          |
 | --------------------- | --------------------------------------------------------------------------------------------------- |
-| **PizzaLauncher**     | A full Minecraft launcher ecosystem — Electron app, Fabric cosmetics mods, backend, and website     |
-| **Minecraft plugins** | Custom commissioned Paper plugins, including summon books, custom redstone items, and SMP mechanics |
+| **[PizzaLauncher](https://pizzalauncher.pages.dev/)**     | A full Minecraft launcher ecosystem — Electron app, Fabric cosmetics mods, backend, and website     |
+| **[Minecraft plugins](https://vaguestan.pages.dev/#projects)** | Custom commissioned Paper plugins, including summon books, custom redstone items, and SMP mechanics |
+| **[CorePlus](https://github.com/itamarb2010-jpg/CorePlus)** | An essentials-style Minecraft core plugin — commands, utilities, and SMP core features for Paper/Spigot |
 | **Vencord plugins**   | Personal Discord client mods — AI rewrite, mention inbox, channel digests, and GIF upload bypass    |
 | **Hytale plugins**    | EconomyPlus, HytaleDungeons, Shop, PlayerList, and more                                             |
+| **[McPluginSkill](https://github.com/itamarb2010-jpg/McPluginSkill)** | A Claude Code toolkit that turns a session into a Minecraft-plugin workshop — scaffolding, builds, and version-aware Paper/Bukkit knowledge |
 
 ---
 
