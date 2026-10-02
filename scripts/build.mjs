@@ -9,7 +9,7 @@ import * as icons from 'simple-icons';
 
 // ---------- content ----------
 
-const INTRO = '16-year-old developer and founder of LucaStudios and PizzaLauncher. I build Minecraft plugins, launchers and Discord mods.';
+const INTRO = '16-year-old developer, like messing with new things. I build Minecraft plugins & mods, Discord mods and everything else.';
 
 const LINKS = [
   { id: 'website', label: 'Website', icon: 'globe', href: 'https://vaguestan.pages.dev/' },

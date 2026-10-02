@@ -2,7 +2,7 @@
 
 ## Hey, I'm Itamar
 
-16-year-old developer and founder of LucaStudios and PizzaLauncher. I build Minecraft plugins, launchers and Discord mods.
+16-year-old developer, like messing with new things. I build Minecraft plugins & mods, Discord mods and everything else.
 
 <a href="https://vaguestan.pages.dev/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/itamarb2010-jpg/itamarb2010-jpg/main/assets/pill-website-dark.svg"><img src="https://raw.githubusercontent.com/itamarb2010-jpg/itamarb2010-jpg/main/assets/pill-website-light.svg" alt="Website"></picture></a>&nbsp; <a href="https://discord.com/users/815623037714038865"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/itamarb2010-jpg/itamarb2010-jpg/main/assets/pill-discord-dark.svg"><img src="https://raw.githubusercontent.com/itamarb2010-jpg/itamarb2010-jpg/main/assets/pill-discord-light.svg" alt="Discord"></picture></a>&nbsp; <a href="mailto:itamarb2010@gmail.com"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/itamarb2010-jpg/itamarb2010-jpg/main/assets/pill-email-dark.svg"><img src="https://raw.githubusercontent.com/itamarb2010-jpg/itamarb2010-jpg/main/assets/pill-email-light.svg" alt="Email"></picture></a>
 
