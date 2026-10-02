@@ -20,7 +20,7 @@ const LINKS = [
 // Cards are laid out two per row, in this order.
 const PROJECTS = [
   { id: 'pizzalauncher', name: 'PizzaLauncher', badge: 'Archived', archived: true, lang: 'Electron', href: 'https://pizzalauncher.pages.dev/',
-    desc: 'My Minecraft launcher, with its own Fabric cosmetics mods, backend and website.' },
+    desc: 'My Minecraft launcher, backend and website.' },
   { id: 'clipify', name: 'Clipify', badge: 'Fabric mod', lang: 'Java', href: 'https://github.com/itamarb2010-jpg/Clipify',
     desc: 'Instant replay for Minecraft: save your recent gameplay as an MP4 with one key, then trim and share clips in-game.' },
   { id: 'ven', name: 'Ven', badge: 'Public', lang: 'JavaScript', href: 'https://github.com/itamarb2010-jpg/Ven',
