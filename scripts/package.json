@@ -1,0 +1,13 @@
+{
+  "name": "profile-readme",
+  "private": true,
+  "type": "module",
+  "description": "Builds README.md and the images in ../assets",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "opentype.js": "^2.0.0",
+    "simple-icons": "^16.33.0"
+  }
+}
