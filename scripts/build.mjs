@@ -19,29 +19,27 @@ const LINKS = [
 
 // Cards are laid out two per row, in this order.
 const PROJECTS = [
-  { id: 'pizzalauncher', name: 'PizzaLauncher', badge: 'Launcher', lang: 'Electron', href: 'https://pizzalauncher.pages.dev/',
+  { id: 'pizzalauncher', name: 'PizzaLauncher', badge: 'Archived', archived: true, lang: 'Electron', href: 'https://pizzalauncher.pages.dev/',
     desc: 'My Minecraft launcher, with its own Fabric cosmetics mods, backend and website.' },
-  { id: 'coreplus', name: 'CorePlus', badge: 'Public', lang: 'Java', href: 'https://github.com/itamarb2010-jpg/CorePlus',
-    desc: 'Essentials-style core plugin for Paper and Spigot: commands, utilities, SMP features.' },
+  { id: 'clipify', name: 'Clipify', badge: 'Fabric mod', lang: 'Java', href: 'https://github.com/itamarb2010-jpg/Clipify',
+    desc: 'Instant replay for Minecraft: save your recent gameplay as an MP4 with one key, then trim and share clips in-game.' },
+  { id: 'ven', name: 'Ven', badge: 'Public', lang: 'JavaScript', href: 'https://github.com/itamarb2010-jpg/Ven',
+    desc: 'Adds CurseForge to the Modrinth App: browse, install and update CurseForge mods and modpacks inside the launcher.' },
   { id: 'commissions', name: 'Commissioned plugins', badge: 'Client work', lang: 'Java', href: 'https://vaguestan.pages.dev/#projects',
     desc: 'Custom Paper plugins for real servers: summon books, redstone items, SMP mechanics.' },
-  { id: 'mcpluginskill', name: 'McPluginSkill', badge: 'Public', lang: 'Claude Code skill', href: 'https://github.com/itamarb2010-jpg/McPluginSkill',
-    desc: 'Turns Claude Code into a Minecraft plugin workshop: scaffolding, builds, version-aware help.' },
   { id: 'vencord', name: 'Vencord plugins', badge: 'Personal', lang: 'Vencord',
     desc: 'Discord client mods: AI rewrite, mention inbox, channel digests and a GIF upload bypass.' },
-  { id: 'hytale', name: 'Hytale plugins', badge: 'Personal', lang: 'Java',
-    desc: 'EconomyPlus, HytaleDungeons, Shop, PlayerList and more, built with Gradle.' },
 ];
 
-const LANG_COLORS = { Java: '#b07219', Electron: '#47848f', 'Claude Code skill': '#8b949e', Vencord: '#e48bd3' };
+const LANG_COLORS = { Java: '#b07219', JavaScript: '#f1e05a', Electron: '#47848f', Vencord: '#e48bd3' };
 
 const TOOLS = ['java', 'siJavascript', 'siDotnet', 'siNodedotjs', 'siElectron', 'siGradle', 'siApachemaven', 'siCloudflare', 'siArduino'];
 const TOOLS_ALT = 'Tools: Java, JavaScript, C# and .NET, Node.js, Electron, Gradle, Maven, Cloudflare, Arduino';
 
 // GitHub's own light and dark colours. Backgrounds stay transparent so the page shows through.
 const THEMES = {
-  light: { link: '#0969da', fg: '#1f2328', muted: '#59636e', border: '#d1d9e0' },
-  dark: { link: '#4493f8', fg: '#f0f6fc', muted: '#9198a1', border: '#3d444d' },
+  light: { link: '#0969da', fg: '#1f2328', muted: '#59636e', border: '#d1d9e0', attention: '#9a6700' },
+  dark: { link: '#4493f8', fg: '#f0f6fc', muted: '#9198a1', border: '#3d444d', attention: '#d29922' },
 };
 
 // Images load from the repo's raw files: GitHub doesn't rewrite relative paths inside <picture>.
@@ -121,9 +119,11 @@ function card(p, t) {
   // Name and badge share a 21px row.
   const nameW = width(FONT.semibold, p.name, 14);
   body += text(FONT.semibold, p.name, pad, baseline(FONT.semibold, 16, 21, 14), 14, nameColor);
+  // Archived projects get GitHub's amber archive label.
+  const badgeLine = p.archived ? t.attention : t.border, badgeText = p.archived ? t.attention : t.muted;
   const bx = pad + nameW + 8, bw = width(FONT.medium, p.badge, 12) + 16;
-  body += `<rect x="${(bx + 0.5).toFixed(2)}" y="17" width="${(bw - 1).toFixed(2)}" height="19" rx="9.5" fill="none" stroke="${t.border}"/>`;
-  body += text(FONT.medium, p.badge, bx + 8, baseline(FONT.medium, 17.5, 18, 12), 12, t.muted);
+  body += `<rect x="${(bx + 0.5).toFixed(2)}" y="17" width="${(bw - 1).toFixed(2)}" height="19" rx="9.5" fill="none" stroke="${badgeLine}"/>`;
+  body += text(FONT.medium, p.badge, bx + 8, baseline(FONT.medium, 17.5, 18, 12), 12, badgeText);
 
   // Description: up to two 18px lines.
   const lines = wrap(FONT.regular, p.desc, 12, CARD_W - pad * 2);
@@ -183,6 +183,8 @@ for (const [mode, t] of Object.entries(THEMES)) {
   files[`tools-${mode}.svg`] = tools(t);
 }
 fs.mkdirSync(OUT, { recursive: true });
+// assets/ only holds generated images, so drop any left over from removed cards or links.
+for (const name of fs.readdirSync(OUT)) if (name.endsWith('.svg') && !(name in files)) fs.rmSync(path.join(OUT, name));
 for (const [name, content] of Object.entries(files)) fs.writeFileSync(path.join(OUT, name), content);
 fs.writeFileSync(path.join(ROOT, 'README.md'), readme());
 const kb = Object.values(files).reduce((n, c) => n + c.length, 0) / 1024;
