@@ -1,4 +1,4 @@
-// Builds the profile README: project cards, link buttons and tool logos as SVGs
+// Builds the profile README: project cards and link buttons as SVGs
 // (a light and a dark version of each), plus README.md itself, all from the data below.
 // Run: npm install && npm run build
 import fs from 'node:fs';
@@ -32,9 +32,6 @@ const PROJECTS = [
 ];
 
 const LANG_COLORS = { Java: '#b07219', JavaScript: '#f1e05a', Electron: '#47848f', Vencord: '#e48bd3' };
-
-const TOOLS = ['java', 'siJavascript', 'siDotnet', 'siNodedotjs', 'siElectron', 'siGradle', 'siApachemaven', 'siCloudflare', 'siArduino'];
-const TOOLS_ALT = 'Tools: Java, JavaScript, C# and .NET, Node.js, Electron, Gradle, Maven, Cloudflare, Arduino';
 
 // GitHub's own light and dark colours. Backgrounds stay transparent so the page shows through.
 const THEMES = {
@@ -98,17 +95,6 @@ const LINE_ICONS = {
   discord: (c) => `<g transform="scale(${16 / 24})"><path fill="${c}" d="${icons.siDiscord.path}"/></g>`,
 };
 
-// Logos on a 24px grid. simple-icons only has the Duke mascot for Java, so the cup is drawn here.
-function logo(id, c) {
-  if (id === 'java') {
-    return `<path d="M9.6 2.8c-1.3 1.2 1.3 2.4 0 3.6s1.3 2.4 0 3.6M13.2 2.8c-1.3 1.2 1.3 2.4 0 3.6s1.3 2.4 0 3.6" fill="none" stroke="${c}" stroke-width="1.6" stroke-linecap="round"/>`
-      + `<path d="M5 12.5h11.5v3.8a4.2 4.2 0 0 1-4.2 4.2H9.2A4.2 4.2 0 0 1 5 16.3z" fill="${c}"/>`
-      + `<path d="M16.5 13.6h1.4a2.1 2.1 0 0 1 0 4.2h-1.6" fill="none" stroke="${c}" stroke-width="1.6"/>`
-      + `<path d="M3.2 22h15.4" stroke="${c}" stroke-width="1.6" stroke-linecap="round"/>`;
-  }
-  return `<path fill="${c}" d="${icons[id].path}"/>`;
-}
-
 // Project card in the style of a pinned repository.
 const CARD_W = 404, CARD_H = 123;
 function card(p, t) {
@@ -146,12 +132,6 @@ function pill(l, t) {
   return svg(w, h, body);
 }
 
-function tools(t) {
-  const size = 22, gap = 18;
-  const body = TOOLS.map((id, i) => `<g transform="translate(${i * (size + gap)} 0) scale(${size / 24})">${logo(id, t.muted)}</g>`).join('');
-  return svg(TOOLS.length * (size + gap) - gap, size, body);
-}
-
 // ---------- README ----------
 
 const themed = (name, alt) =>
@@ -170,7 +150,6 @@ function readme() {
     INTRO,
     pills,
     ...rows,
-    themed('tools', TOOLS_ALT),
   ].join('\n\n') + '\n';
 }
 
@@ -180,7 +159,6 @@ const files = {};
 for (const [mode, t] of Object.entries(THEMES)) {
   for (const p of PROJECTS) files[`card-${p.id}-${mode}.svg`] = card(p, t);
   for (const l of LINKS) files[`pill-${l.id}-${mode}.svg`] = pill(l, t);
-  files[`tools-${mode}.svg`] = tools(t);
 }
 fs.mkdirSync(OUT, { recursive: true });
 // assets/ only holds generated images, so drop any left over from removed cards or links.
